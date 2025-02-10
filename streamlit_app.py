@@ -124,7 +124,7 @@ def main():
         if st.button("Logout", key="logout_btn"):
             st.session_state.logged_in = False
             st.session_state.username = ""
-            st.experimental_rerun()
+            st.rerun()
     else:
         # 로그인/회원가입 폼 표시
         if st.session_state.menu_choice == "Login":
@@ -147,7 +147,7 @@ def main():
             if st.button("Sign Up", key="signup_btn"):
                 add_user(new_user, new_password)
                 st.success("Account created! Please log in.")
-                st.experimental_rerun()
+                st.rerun()
 
     # ===== 위키 사이드바 네비게이션 =====
     st.sidebar.title("Wiki Navigation")
@@ -191,7 +191,7 @@ def main():
                         if st.button("이 페이지 수정하기"):
                             st.session_state.edit_page = title
                             st.session_state.wiki_mode = "페이지 수정"
-                            st.experimental_rerun()
+                            st.rerun()
         else:
             st.info("등록된 페이지가 없습니다.")
 
@@ -204,7 +204,7 @@ def main():
                 if new_title and new_content:
                     add_page(new_title, new_content, st.session_state.username)
                     st.success("페이지가 생성되었습니다!")
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.error("제목과 내용을 모두 입력하세요.")
         else:
@@ -227,7 +227,7 @@ def main():
                         # 수정 완료 후 페이지 선택 모드로 전환
                         st.session_state.wiki_mode = "페이지 선택"
                         del st.session_state.edit_page
-                        st.experimental_rerun()
+                        st.rerun()
                     else:
                         st.error("내용을 입력해주세요.")
             else:
